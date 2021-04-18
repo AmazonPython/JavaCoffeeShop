@@ -11,14 +11,19 @@
 |
 */
 
-Route::get('/', 'Web\AppController@getApp')->middleware('auth');
+Route::get('/', 'Web\AppController@getApp');
 
-Route::get('/login', 'Web\AppController@getLogin')
-    ->middleware('guest')
-    ->name('login');
-
-Route::get('/auth/{social}', 'Web\AuthenticationController@getSocialRedirect')
+Route::get( '/auth/{social}', 'Web\AuthenticationController@getSocialRedirect' )
     ->middleware('guest');
 
-Route::get('/auth/{social}/callback', 'Web\AuthenticationController@getSocialRedirect')
+Route::get( '/auth/{social}/callback', 'Web\AuthenticationController@getSocialCallback' )
     ->middleware('guest');
+
+Route::get( '/logout', 'Web\AppController@getLogout' )
+    ->name('logout');
+
+Route::get('regeocode', function () {
+    return \App\Utilities\GaodeMaps::findClosestCity('上海', 121.49974000, 31.23985300);
+});
+
+Route::get('/cafe/{id}', 'API\CafesController@getCafe');

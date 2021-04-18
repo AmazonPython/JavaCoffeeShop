@@ -23,6 +23,6 @@
 </div>
 
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-
+<script src="https://webapi.amap.com/maps?v=1.4.8&key={{ env('GAODE_MAPS_JS_API_KEY') }}"></script>
 </body>
 </html>

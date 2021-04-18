@@ -4,7 +4,8 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('foundation-sites');
-} catch (e) {}
+} catch (e) {
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -31,8 +32,19 @@ if (token) {
 }
 
 import Vue from 'vue';
+
 import router from './routes.js'
+import store from './store.js'
 
 new Vue({
-    router
-}).$mount('#app')
+    router,
+    store
+}).$mount('#app');
+
+ga('set', 'page', router.currentRoute.path);
+ga('send', 'pageview');
+
+router.afterEach((to, from) => {
+    ga('set', 'page', to.path);
+    ga('send', 'pageview');
+});
