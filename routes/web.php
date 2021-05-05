@@ -19,7 +19,7 @@ Route::get( '/auth/{social}', 'Web\AuthenticationController@getSocialRedirect' )
 Route::get( '/auth/{social}/callback', 'Web\AuthenticationController@getSocialCallback' )
     ->middleware('guest');
 
-Route::get( '/logout', 'Web\AppController@getLogout' )
+Route::get( '/logout', 'Web\AppController@getLogout')
     ->name('logout');
 
 Route::get('regeocode', function () {

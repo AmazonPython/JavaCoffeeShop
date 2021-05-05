@@ -24,24 +24,28 @@ class StoreCafeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'    => 'required|max:10',
+            'company_name' => 'required_without:company_id',
             'address' => 'required',
-            'city'    => 'required',
-            'state'   => 'required',
-            'zip'     => 'required|regex:/\b\d{6}\b/'
+            'city' => 'required',
+            'state' => 'required',
+            'zip' => 'required',
+            'website' => 'sometimes|url',
+            'tea' => 'boolean',
+            'matcha' => 'boolean'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required'     => '咖啡店名字不能为空',
-            'name.max'          => '咖啡店名不能超过10个字符',
-            'address.required'  => '咖啡店地址不能为空',
-            'city.required'     => '咖啡店所在城市不能为空',
-            'state.required'    => '咖啡店所在省份不能为空',
-            'zip.required'      => '咖啡店邮编不能为空',
-            'zip.regex'         => '无效的邮政编码'
+            'company_name.required_without' => '咖啡店所属公司不能为空',
+            'address.required' => '咖啡店地址不能为空',
+            'city.required' => '咖啡店所在城市不能为空',
+            'state.required' => '咖啡店所在省份不能为空',
+            'zip.required' => '咖啡店邮编不能为空',
+            'zip.regex' => '无效的邮政编码',
+            'website.url' => '无效的咖啡店网址',
         ];
     }
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace app\Http\Controllers\Web;
 
 use Auth;
 use App\Http\Controllers\Controller;
@@ -15,7 +15,6 @@ class AppController extends Controller
     public function getLogout()
     {
         Auth::logout();
-
         return redirect('/');
     }
 }
